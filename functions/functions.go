@@ -1,5 +1,7 @@
 package functions
 
+import "strings"
+
 func LengthOfLongestSubstring(s string) int {
 	n := len(s)
 	seen := make(map[byte]int)
@@ -52,4 +54,26 @@ func RemoveElement(nums []int, val int) int {
 		}
 	}
 	return len(nums)
+}
+
+// The LengthOfLastWord function takes a string as input and returns the length of the last word in the string.
+func LengthOfLastWord(s string) int {
+	words := strings.Fields(s)
+	return len(words[len(words)-1])
+}
+
+// The plusOne function takes an input slice of non-negative integers representing a non-negative integer and returns a new slice representing that integer plus one.
+func PlusOne(digits []int) []int {
+	var n int = len(digits)
+	for i := n - 1; i >= 0; i-- {
+		if digits[i] < 9 {
+			digits[i] += 1
+			return digits
+		} else {
+			digits[i] = 0
+		}
+	}
+	var a = make([]int, n+1)
+	a[0] = 1
+	return a
 }
