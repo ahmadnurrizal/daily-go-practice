@@ -12,4 +12,6 @@ func main() {
 	fmt.Println(functions.RemoveElement([]int{0, 1, 2, 2, 3, 0, 4, 2}, 2))
 	fmt.Println(functions.LengthOfLastWord("Hello World     "))
 	fmt.Println(functions.PlusOne([]int{4, 3, 2, 1}))
+	fmt.Println(functions.AddBinary("101", "110"))
+	fmt.Println(functions.ClimbStairs(5))
 }

@@ -1,6 +1,9 @@
 package functions
 
-import "strings"
+import (
+	"strconv"
+	"strings"
+)
 
 func LengthOfLongestSubstring(s string) int {
 	n := len(s)
@@ -76,4 +79,39 @@ func PlusOne(digits []int) []int {
 	var a = make([]int, n+1)
 	a[0] = 1
 	return a
+}
+
+// AddBinary function takes two binary strings a and b as input, adds them together, and returns their sum as a binary string.
+func AddBinary(a string, b string) string {
+	i, j, res, carry := len(a)-1, len(b)-1, "", 0
+	for i >= 0 || j >= 0 {
+		sum := carry
+		if i >= 0 {
+			sum += int(a[i] - '0')
+			i--
+		}
+		if j >= 0 {
+			sum += int(b[j] - '0')
+			j--
+		}
+		res = strconv.Itoa(sum%2) + res
+		carry = sum / 2
+	}
+	if carry == 1 {
+		return "1" + res
+	}
+	return res
+}
+
+func ClimbStairs(n int) int {
+
+	n1, n2 := 1, 1
+	var temp int
+	for i := 0; i < n-1; i++ {
+		temp = n1
+		n1 = n1 + n2
+		n2 = temp
+
+	}
+	return n1
 }
