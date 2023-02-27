@@ -115,3 +115,21 @@ func ClimbStairs(n int) int {
 	}
 	return n1
 }
+
+// https://leetcode.com/problems/merge-sorted-array/
+// I add return on this code, just little adjustment
+func Merge(nums1 []int, m int, nums2 []int, n int) []int {
+	n_num1 := m - 1
+	n_num2 := n - 1
+	for k := m + n - 1; k >= 0; k-- {
+		if (n_num1 >= 0 && n_num2 >= 0 && nums1[n_num1] > nums2[n_num2]) || (n_num2 < 0) {
+			nums1[k] = nums1[n_num1]
+			n_num1--
+		} else {
+			nums1[k] = nums2[n_num2]
+			n_num2--
+		}
+	}
+
+	return nums1
+}
