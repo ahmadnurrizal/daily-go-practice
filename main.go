@@ -15,4 +15,6 @@ func main() {
 	fmt.Println(functions.AddBinary("101", "110"))
 	fmt.Println(functions.ClimbStairs(5))
 	fmt.Println(functions.Merge([]int{1, 2, 3, 0, 0, 0}, 3, []int{2, 5, 6}, 3))
+	binaryTree := functions.InitBinaryTree()
+	fmt.Println(functions.InorderTraversal(binaryTree))
 }
