@@ -1,6 +1,8 @@
 package functions
 
 import (
+	"fmt"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -132,4 +134,36 @@ func Merge(nums1 []int, m int, nums2 []int, n int) []int {
 	}
 
 	return nums1
+}
+
+func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+	// n_num1 := len(nums1) - 1
+	// n_num2 := len(nums2) - 1
+
+	// myArr := make([]int, len(nums1)+len(nums2))
+	// copy(myArr[:], nums1[:])
+	// fmt.Println(myArr)
+
+	// for k := len(nums1) + len(nums2) - 1; k >= 0; k-- {
+	// 	if (n_num1 >= 0 && n_num2 >= 0 && myArr[n_num1] > nums2[n_num2]) || (n_num2 < 0) {
+	// 		myArr[k] = myArr[n_num1]
+	// 		n_num1--
+	// 	} else {
+	// 		myArr[k] = nums2[n_num2]
+	// 		n_num2--
+	// 	}
+	// }
+
+	// mid := (len(nums1) + len(nums2)) / 2
+	// if len(myArr)%2 == 0 {
+	// 	return float64(myArr[mid-1]+myArr[mid]) / 2.0
+	// } else {
+	// 	return float64(myArr[mid])
+	// }
+
+	nums1 = append(nums1, nums2...)
+	sort.Ints(nums1)
+	fmt.Println(nums1)
+	return float64(nums1[len(nums1)>>1]+nums1[(len(nums1)-1)>>1]) / 2.0
+
 }
