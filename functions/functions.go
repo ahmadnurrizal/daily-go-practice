@@ -137,6 +137,7 @@ func Merge(nums1 []int, m int, nums2 []int, n int) []int {
 }
 
 func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+	//// Option 1
 	// n_num1 := len(nums1) - 1
 	// n_num2 := len(nums2) - 1
 
@@ -161,9 +162,32 @@ func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	// 	return float64(myArr[mid])
 	// }
 
+	//// Option 2
 	nums1 = append(nums1, nums2...)
 	sort.Ints(nums1)
 	fmt.Println(nums1)
 	return float64(nums1[len(nums1)>>1]+nums1[(len(nums1)-1)>>1]) / 2.0
+}
 
+// https://leetcode.com/problems/longest-palindromic-substring/description/
+func LongestPalindrome(s string) string {
+	var max string
+	for i := 0; i < len(s); i++ {
+		max = MaxPalindrome(s, i, i, max)   // check for odd palindrome
+		max = MaxPalindrome(s, i, i+1, max) // check for even palindrome
+	}
+	return max
+}
+
+func MaxPalindrome(s string, i, j int, max string) string {
+	var sub string
+	for i >= 0 && j < len(s) && s[i] == s[j] {
+		sub = s[i : j+1]
+		i--
+		j++
+	}
+	if len(max) < len(sub) { // compare lasts max palindrome
+		return sub
+	}
+	return max
 }
