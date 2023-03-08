@@ -21,5 +21,6 @@ func main() {
 	fmt.Println(functions.LongestPalindrome("babad"))
 	fmt.Println(functions.MaxArea([]int{1, 8, 6, 2, 5, 4, 8, 3, 7}))
 	fmt.Println(functions.ThreeSum([]int{-1, 0, 1, 2, -1, -4}))
+	fmt.Println(functions.LetterCombinations("23"))
 
 }

@@ -251,3 +251,30 @@ func ThreeSum(nums []int) [][]int {
 	}
 	return result
 }
+
+// https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/
+func LetterCombinations(digits string) []string {
+	if digits == "" {
+		return []string{}
+	}
+
+	phone := map[string]string{
+		"2": "abc", "3": "def", "4": "ghi", "5": "jkl",
+		"6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz",
+	}
+	result := []string{}
+
+	var backtrack func(string, string)
+	backtrack = func(combination string, nextDigits string) {
+		if len(nextDigits) == 0 {
+			result = append(result, combination)
+		} else {
+			for _, letter := range phone[string(nextDigits[0])] {
+				backtrack(combination+string(letter), nextDigits[1:])
+			}
+		}
+	}
+
+	backtrack("", digits)
+	return result
+}
